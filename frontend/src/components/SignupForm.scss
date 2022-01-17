@@ -8,3 +8,14 @@ input[type='number']::-webkit-outer-spin-button {
 .ant-input-number-handler-wrap {
   visibility: hidden;
 }
+
+// signup
+.signup-form {
+  display: grid;
+  grid-template-areas:
+    'upload form-items'
+    'upload form-items';
+  .upload-container {
+    grid-area: upload;
+  }
+}

@@ -1,9 +1,52 @@
-.accounts {
+.container {
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  height: 100vh;
+  grid-template-columns: 1fr minmax(40%, auto);
+  grid-auto-flow: dense;
+  height: 100%;
+
+  .black_overlay {
+    position: absolute;
+    width: 100%;
+    height: inherit;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+
+  .info-container {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: url('/asserts/meetingroom.jpg') no-repeat center center;
+    height: inherit;
+    color: #fff;
+
+    .info-title {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #fff;
+      z-index: 10;
+    }
+
+    .info-detail {
+      text-align: center;
+      z-index: 10;
+    }
+  }
+
+  .form-container {
+    padding: 4rem;
+
+    .form-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+  }
 }
 
-.accounts-info {
-  background-color: black;
+@media screen and (max-width: 768px) {
+  .container {
+    grid-template-columns: auto;
+  }
 }
