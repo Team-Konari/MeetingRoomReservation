@@ -1,0 +1,61 @@
+// input antd number remove arrows
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.ant-input-number-handler-wrap {
+  visibility: hidden;
+}
+
+// signup
+.signup-form {
+  display: grid;
+  grid-template-areas:
+    'upload form-items'
+    'upload form-items';
+  .upload-container {
+    grid-area: upload;
+  }
+}
+
+.ant-form-item-control-input-content > .ant-input-password,
+input::placeholder {
+  font-size: 0.8rem;
+}
+
+form .ant-btn-primary {
+  background-color: black;
+  border-color: black;
+  &:hover {
+    background-color: gray;
+    border-color: gray;
+  }
+  &:focus {
+    background-color: gray;
+    border-color: gray;
+  }
+  &:active {
+    background-color: gray;
+    border-color: gray;
+    box-shadow: none;
+  }
+}
+
+.ant-form-item-explain-error {
+  font-size: 0.8rem;
+}
+
+.ant-form-item-control-input-content > .ant-btn-primary {
+  &:after {
+    display: none;
+  }
+}
+
+form > .ant-form-item {
+  margin-bottom: 20px;
+  .ant-form-item-label {
+    padding: 0 0 3px;
+  }
+}
