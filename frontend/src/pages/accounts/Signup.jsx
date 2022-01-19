@@ -12,18 +12,21 @@ const Signup = () => {
           <div className="black_overlay"></div>
           <h2 className="info-title">CREATE ACCOUNT</h2>
           <p className="info-detail">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+            Conference Room Reservation System
             <br />
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            Our services enable you to use your meetings and conference rooms more efficiently.
           </p>
         </div>
       </DesktopOrTablet>
       <div className="form-container">
-        <h2 className="form-title">Sign Up</h2>
+        <h2 className="form-title">Join Us</h2>
         <p className="form-info">Create Your Accounts.</p>
         <SignupForm />
-        <div>
-          Already a member? <Link to="/accounts/login">Login</Link>
+        <div className="link-container">
+          Already a member?{' '}
+          <Link to="/accounts/login">
+            <b>Login</b>
+          </Link>
         </div>
       </div>
     </div>

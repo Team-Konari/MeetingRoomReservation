@@ -1,31 +1,69 @@
-import React, { useState } from 'react';
-import { Form, Input, Button, InputNumber } from 'antd';
+import React from 'react';
+import { Form, Input, Button, Row, Col } from 'antd';
 import './SignupForm.scss';
 
 const SignupForm = () => {
   return (
     <Form name="basic" layout="vertical" wrapperCol={{ offset: 0, span: 32 }}>
-      <Form.Item label="email" name="email" rules={[{ required: true, message: '이메일을 입력하세요.' }]}>
-        <Input autoComplete="true" placeholder="이메일 입력" />
-      </Form.Item>
-      <Form.Item label="password" name="password" rules={[{ required: true, message: '비밀번호를 입력하세요.' }]}>
-        <Input.Password autoComplete="true" placeholder="비밀번호 입력" />
+      <Form.Item label="Name" name="name" rules={[{ required: true, message: 'Please input your name' }]}>
+        <Input autoComplete="true" placeholder="name" />
       </Form.Item>
       <Form.Item
-        label="password-check"
-        name="password-check"
-        rules={[{ required: true, message: '비밀번호를 확인해주세요.' }]}
+        label="Email"
+        name="email"
+        rules={[
+          { required: true, message: 'Please input your email.' },
+          {
+            type: 'email',
+            message: 'The input is not valid E-mail!',
+          },
+        ]}
       >
-        <Input.Password autoComplete="true" placeholder="비밀번호 확인" />
+        <Input autoComplete="true" placeholder="user@gmail.com" />
       </Form.Item>
-      <Form.Item label="phone" name="phone" rules={[{ required: true, message: '휴대폰 번호를 입력하세요.' }]}>
-        <InputNumber style={{ width: '100%' }} maxLength={11} placeholder="휴대전화(-제외)" />
+      <Form.Item
+        label="Password"
+        name="password"
+        rules={[{ required: true, message: 'Please input your password.' }]}
+        hasFeedback
+      >
+        <Input.Password autoComplete="true" placeholder="6+ characters" />
       </Form.Item>
-      <Form.Item label="otp" name="otp" rules={[{ required: true, message: '발송된 인증번호를 입력하세요.' }]}>
-        <InputNumber style={{ width: '100%' }} maxLength={6} placeholder="123456" />
+      <Form.Item
+        label="Confirm Password"
+        name="confirm"
+        hasFeedback
+        rules={[
+          { required: true, message: 'Please confirm your password.' },
+          ({ getFieldValue }) => ({
+            validator(_, value) {
+              if (!value || getFieldValue('password') === value) {
+                return Promise.resolve();
+              }
+              return Promise.reject(new Error('The two passwords that you entered do not match!'));
+            },
+          }),
+        ]}
+      >
+        <Input.Password dependencies={['password']} autoComplete="true" placeholder="6+ characters" />
+      </Form.Item>
+      <Form.Item label="Phone" name="phone" rules={[{ required: true, message: 'Please confirm your phone number.' }]}>
+        <Row gutter={24}>
+          <Col span={16}>
+            <Input type="number" name="phone" placeholder="01012345678" />
+          </Col>
+          <Col span={8}>
+            <Button type="primary" htmlType="button" style={{ width: '100%' }}>
+              Send
+            </Button>
+          </Col>
+        </Row>
+      </Form.Item>
+      <Form.Item name="otp" rules={[{ required: true, message: 'Please input verification code.' }]}>
+        <Input name="otp" type="number" style={{ width: '100%' }} placeholder="000000" />
       </Form.Item>
       <Form.Item>
-        <Button type="primary" htmlType="submit" placeholder="123" block>
+        <Button type="primary" htmlType="submit" block>
           Create account
         </Button>
       </Form.Item>
